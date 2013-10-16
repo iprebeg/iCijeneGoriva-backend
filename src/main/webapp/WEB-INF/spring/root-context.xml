@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+	
+	
+	<bean id="omvScraper" class="com.prebeg.cijenegoriva.data.scraper.OMVScraper"/>
+	<bean id="inaScraper" class="com.prebeg.cijenegoriva.data.scraper.INAScraper"/>
+	<bean id="lukoilScraper" class="com.prebeg.cijenegoriva.data.scraper.LukoilScraper"/>
+	<bean id="tifonScraper" class="com.prebeg.cijenegoriva.data.scraper.TifonScraper"/>
+	<bean id="petrolScraper" class="com.prebeg.cijenegoriva.data.scraper.PetrolScraper"/>
+	<bean id="petrolScraperLegacy" class="com.prebeg.cijenegoriva.data.scraper.PetrolScraperLegacy"/>
+	<bean id="crobenzScraper" class="com.prebeg.cijenegoriva.data.scraper.CroBenzScraper"/>
+	<bean id="euroPetrolScraper" class="com.prebeg.cijenegoriva.data.scraper.EuroPetrolScraper"/>
+
+	<bean id="cachedCjenik" class="com.prebeg.cijenegoriva.data.CachedCjenik"/>
+	
+	
+	<bean id="scraperEngine" class="com.prebeg.cijenegoriva.data.scraper.ScraperEngine">
+		<property name="omvScraper" ref="omvScraper"/> 
+		<property name="inaScraper" ref="inaScraper"/> 
+		<property name="lukoilScraper" ref="lukoilScraper"/> 
+		<property name="tifonScraper" ref="tifonScraper"/>
+		<property name="petrolScraper" ref="petrolScraper"/> 
+		<property name="petrolScraperLegacy" ref="petrolScraperLegacy"/> 
+		<property name="crobenzScraper" ref="crobenzScraper"/> 
+		<property name="euroPetrolScraper" ref="euroPetrolScraper"/> 
+	</bean>
+	
+	<bean id="scraperService" class="com.prebeg.cijenegoriva.data.scraper.ScraperService">
+		<property name="scraperEngine" ref="scraperEngine" />
+		<property name="cachedCjenik" ref="cachedCjenik" />
+		
+	</bean>
+	
+	
+	<bean id="annotatedExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor" 
+			p:corePoolSize="5" p:maxPoolSize="5" />
+	<task:scheduler id="annotatedScheduler" pool-size="5" />
+	<task:annotation-driven executor="annotatedExecutor"  scheduler="annotatedScheduler" />
+	
+	<!--  SyncTargetsServiceImpl scheduler ref by id="syncTargetsScheduler" -->
+	<alias name="annotatedScheduler" alias="syncTargetsScheduler" />
+	
+	<!--  Hi2ServiceImpl executor ref by id="myExecutor" -->
+	<alias name="annotatedExecutor" alias="myExecutor" />
+	
+	
+	<task:scheduled-tasks scheduler="annotatedScheduler">
+	
+	
+		<!-- DEVELOPMENT every minute     
+    	<task:scheduled ref="scraperService" method="runScrapers" cron="0 */1 * * * *" />
+    	-->   
+    	
+    	<!-- PRODUCTION every 6 hours, hour +5min -->    
+    	<task:scheduled ref="scraperService" method="runScrapers" cron="0 5 */6 * * *" />
+    	 
+    	  
+	</task:scheduled-tasks>
+		
+</beans>
