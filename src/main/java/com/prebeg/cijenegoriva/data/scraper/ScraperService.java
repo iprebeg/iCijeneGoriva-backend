@@ -2,20 +2,11 @@ package com.prebeg.cijenegoriva.data.scraper;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import javax.mail.internet.MimeMessage;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.mail.MailException;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.mail.javamail.MimeMessagePreparator;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import com.prebeg.cijenegoriva.CijeneGorivaController;
 import com.prebeg.cijenegoriva.data.CachedCjenik;
 import com.prebeg.cijenegoriva.model.Cjenik;
 import com.prebeg.cijenegoriva.notification.NotificationService;

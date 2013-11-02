@@ -4,7 +4,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
 
-import com.prebeg.cijenegoriva.data.scraper.ScraperEngine;
 import com.prebeg.cijenegoriva.data.scraper.ScraperService;
 import com.prebeg.cijenegoriva.model.Cjenik;
 
