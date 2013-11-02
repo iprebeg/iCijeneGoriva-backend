@@ -1,0 +1,12 @@
+language: java
+jdk:
+- oraclejdk7
+deploy:
+  provider: openshift
+  user: ivor.prebeg@gmail.com
+  password:
+    secure: c6D/d/6nfRlPtNbe6E6Aa+AerlsyQWNlFxB7xfK+ikhyagA0k0oj/dWvKtNyVZZjHNfL7mR1YTfjFpVMeAOlXkX6hBdDqtqbyQeA7sVSXgkQ7bW7A2NoVxX/SHvVFL617rQ2wAWW7wQrdyKiTNEUpLdHFkdhc63vVNORFJcrRo0=
+  app: icijenegoriva
+  domain: prebeg
+  on:
+    repo: iprebeg/iCijeneGoriva-backend
