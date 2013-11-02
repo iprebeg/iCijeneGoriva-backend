@@ -1,6 +1,5 @@
 package com.prebeg.cijenegoriva.model;
 
-import java.io.File;
 import java.io.StringWriter;
 import java.util.Collections;
 import java.util.LinkedList;
