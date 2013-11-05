@@ -16,6 +16,7 @@ import com.prebeg.cijenegoriva.model.Gorivo;
 @Component("scraperEngine")
 public class ScraperEngine {
 	
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(ScraperEngine.class);
 	
 	@Resource
