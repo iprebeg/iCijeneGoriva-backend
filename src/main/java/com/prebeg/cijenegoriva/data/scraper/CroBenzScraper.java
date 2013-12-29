@@ -1,11 +1,8 @@
 package com.prebeg.cijenegoriva.data.scraper;
 
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.net.MalformedURLException;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,9 +10,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
 
-import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlTable;
 import com.gargoylesoftware.htmlunit.html.HtmlTableCell;

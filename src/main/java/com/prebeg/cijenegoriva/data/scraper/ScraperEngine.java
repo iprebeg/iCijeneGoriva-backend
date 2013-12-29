@@ -1,19 +1,14 @@
 package com.prebeg.cijenegoriva.data.scraper;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.ElementNotFoundException;
-import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.prebeg.cijenegoriva.model.Cjenik;
 import com.prebeg.cijenegoriva.model.Gorivo;
@@ -21,6 +16,7 @@ import com.prebeg.cijenegoriva.model.Gorivo;
 @Component("scraperEngine")
 public class ScraperEngine {
 	
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(ScraperEngine.class);
 	
 	@Resource

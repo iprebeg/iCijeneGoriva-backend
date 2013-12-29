@@ -15,6 +15,7 @@ import com.prebeg.cijenegoriva.data.scraper.ScraperService;
 @Component
 public class NotificationService {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(ScraperService.class);
 
 	private JavaMailSender mailSender;
