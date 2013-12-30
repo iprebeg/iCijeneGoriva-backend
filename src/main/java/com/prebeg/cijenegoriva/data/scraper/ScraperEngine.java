@@ -43,6 +43,9 @@ public class ScraperEngine {
 	@Resource
 	EuroPetrolScraper euroPetrolScraper;
 		
+  @Resource
+  CroduxScraper croduxScraper; 
+
 	private WebClient wc = null;
 	
 	public ScraperEngine () {
@@ -66,6 +69,10 @@ public class ScraperEngine {
 				cjenik.addGoriva(newGoriva);
 
 			*/
+
+		  newGoriva = croduxScraper.scrape(wc);
+			if (newGoriva != null)
+				cjenik.addGoriva(newGoriva);
 		
 		
 			newGoriva = tifonScraper.scrape(wc);
