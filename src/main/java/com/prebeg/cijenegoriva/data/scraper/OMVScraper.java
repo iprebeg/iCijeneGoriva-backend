@@ -31,7 +31,7 @@ import com.prebeg.cijenegoriva.model.Gorivo;
 import com.prebeg.cijenegoriva.notification.NotificationService;
 
 @Component
-public class OMVScraper {
+public class OMVScraper implements Scraper {
 	
 
 	@Resource
@@ -195,8 +195,8 @@ public class OMVScraper {
 
 			List<Gorivo> omvGoriva = new LinkedList<Gorivo>();
 			
-			wc.setJavaScriptEnabled(true);
-			wc.setCssEnabled(true);
+			wc.getOptions().setJavaScriptEnabled(true);
+			wc.getOptions().setCssEnabled(true);
 			
 			// IN YOUR FACE DIRTY OIL MOTHERFUCKERS
 			wc.setAjaxController(new NicelyResynchronizingAjaxController());
@@ -389,8 +389,8 @@ public class OMVScraper {
 				
 		    }    
 			
-			wc.setJavaScriptEnabled(false);
-			wc.setCssEnabled(false);
+			wc.getOptions().setJavaScriptEnabled(false);
+			wc.getOptions().setCssEnabled(false);
 			System.out.println("[OK]");
 			return omvGoriva;
 
@@ -408,8 +408,8 @@ public class OMVScraper {
 		}
 		}
 		
-		wc.setJavaScriptEnabled(false);
-		wc.setCssEnabled(false);
+		wc.getOptions().setJavaScriptEnabled(false);
+		wc.getOptions().setCssEnabled(false);
 		
 		return null;
 	}

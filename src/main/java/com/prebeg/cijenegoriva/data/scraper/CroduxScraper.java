@@ -25,7 +25,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 
 @Component
-public class CroduxScraper {
+public class CroduxScraper implements Scraper {
 	
 	@Resource
 	NotificationService notificationService;

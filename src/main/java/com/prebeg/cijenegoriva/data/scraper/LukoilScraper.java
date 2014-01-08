@@ -17,11 +17,12 @@ import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlDivision;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.prebeg.cijenegoriva.model.Gorivo;
 import com.prebeg.cijenegoriva.notification.NotificationService;
 
 @Component
-public class LukoilScraper {
+public class LukoilScraper implements Scraper {
 	
 
 	@Resource
@@ -110,8 +111,8 @@ public class LukoilScraper {
 
 			List<HtmlDivision> kartaContDivs = (List<HtmlDivision>) page.getByXPath( "//div[@class='gorivo-karta-cont']");
 			HtmlDivision kartaDiv = kartaContDivs.get(0);
-			Iterable<HtmlElement> childs = kartaDiv.getChildElements();
-			Iterator<HtmlElement> chit = childs.iterator();
+			Iterable<DomElement> childs = kartaDiv.getChildElements();
+			Iterator<DomElement> chit = childs.iterator();
 			
 			// skip anchor 
 			chit.next();

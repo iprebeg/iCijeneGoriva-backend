@@ -20,7 +20,7 @@ import com.prebeg.cijenegoriva.model.Gorivo;
 import com.prebeg.cijenegoriva.notification.NotificationService;
 
 @Component
-public class EuroPetrolScraper {
+public class EuroPetrolScraper implements Scraper {
 	
 
 	@Resource

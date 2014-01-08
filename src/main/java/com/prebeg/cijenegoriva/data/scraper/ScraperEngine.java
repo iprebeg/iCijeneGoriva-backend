@@ -1,8 +1,10 @@
 package com.prebeg.cijenegoriva.data.scraper;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import javax.annotation.Resource;
+import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,12 +48,24 @@ public class ScraperEngine {
   @Resource
   CroduxScraper croduxScraper; 
 
-	private WebClient wc = null;
-	
-	public ScraperEngine () {
-		wc = new WebClient(BrowserVersion.FIREFOX_3_6);
-		wc.setJavaScriptEnabled(false);
-		wc.setCssEnabled(false);
+  List<Scraper> scrapers;
+
+  private WebClient getWebClient() {
+		WebClient wc = null;
+    wc = new WebClient(BrowserVersion.CHROME);
+		wc.getOptions().setJavaScriptEnabled(false);
+		wc.getOptions().setCssEnabled(false);
+    return wc;
+  }
+
+  @PostConstruct
+	public void postconstruct() {
+    scrapers = new ArrayList<Scraper>();
+    scrapers.add(croduxScraper);
+    scrapers.add(tifonScraper);
+    scrapers.add(inaScraper);
+    scrapers.add(petrolScraper);
+    scrapers.add(lukoilScraper);
 	}
 	
 	public Cjenik scrape() {
@@ -63,45 +77,14 @@ public class ScraperEngine {
 		Cjenik cjenik = new Cjenik();
 		List<Gorivo> newGoriva = null;
 
-			/*
-			newGoriva = omvScraper.scrape(wc);
+    for (Scraper scraper : scrapers)
+    {
+      WebClient wc = getWebClient();
+		  newGoriva = scraper.scrape(wc);
 			if (newGoriva != null)
 				cjenik.addGoriva(newGoriva);
-
-			*/
-
-		  newGoriva = croduxScraper.scrape(wc);
-			if (newGoriva != null)
-				cjenik.addGoriva(newGoriva);
-		
-		
-			newGoriva = tifonScraper.scrape(wc);
-			if (newGoriva != null)
-				cjenik.addGoriva(newGoriva);
-			
-			newGoriva = inaScraper.scrape(wc);
-			if (newGoriva != null)
-				cjenik.addGoriva(newGoriva);
-			
-			newGoriva = petrolScraper.scrape(wc);
-			if (newGoriva != null)
-				cjenik.addGoriva(newGoriva);			
-			
-			newGoriva = lukoilScraper.scrape(wc);
-			if (newGoriva != null)
-				cjenik.addGoriva(newGoriva);
-			
-			/*
-			newGoriva = crobenzScraper.scrape(wc);
-			if (newGoriva != null)
-				cjenik.addGoriva(newGoriva);
-			*/
-			
-			/*
-			newGoriva = euroPetrolScraper.scrape(wc);
-			if (newGoriva != null)
-				cjenik.addGoriva(newGoriva);
-			*/
+	    wc.closeAllWindows();
+    }
 
 		for (Gorivo gorivo : cjenik.getGoriva()) {
 			System.out.println("Distributer:" + gorivo.getDistributer() + ";Naziv:" + gorivo.getNaziv() + ";Datum:" + gorivo.getDatum() + ";Cijena:" + gorivo.getCijena() + ";Kategorija:" + gorivo.getKategorija() + ";Autocesta:" + gorivo.getAutocesta());

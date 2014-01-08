@@ -22,7 +22,7 @@ import com.prebeg.cijenegoriva.model.Gorivo;
 import com.prebeg.cijenegoriva.notification.NotificationService;
 
 @Component
-public class PetrolScraper {
+public class PetrolScraper implements Scraper {
 
 	@Resource
 	NotificationService notificationService;
