@@ -19,7 +19,7 @@ import com.prebeg.cijenegoriva.model.Gorivo;
 import com.prebeg.cijenegoriva.notification.NotificationService;
 
 @Component
-public class CroBenzScraper {
+public class CroBenzScraper implements Scraper {
 	
 	@Resource
 	NotificationService notificationService;

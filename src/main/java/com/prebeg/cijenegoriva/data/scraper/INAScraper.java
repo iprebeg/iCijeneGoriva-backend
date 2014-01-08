@@ -21,7 +21,7 @@ import com.prebeg.cijenegoriva.model.Gorivo;
 import com.prebeg.cijenegoriva.notification.NotificationService;
 
 @Component
-public class INAScraper {
+public class INAScraper implements Scraper {
 	
 
 	@Resource
