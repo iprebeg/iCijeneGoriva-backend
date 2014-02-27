@@ -63,9 +63,9 @@ public class ScraperEngine {
     scrapers = new ArrayList<Scraper>();
     scrapers.add(croduxScraper);
     scrapers.add(tifonScraper);
-    scrapers.add(inaScraper);
-    scrapers.add(petrolScraper);
-    scrapers.add(lukoilScraper);
+    //scrapers.add(inaScraper);
+    //scrapers.add(petrolScraper);
+    //scrapers.add(lukoilScraper);
 	}
 	
 	public Cjenik scrape() {
