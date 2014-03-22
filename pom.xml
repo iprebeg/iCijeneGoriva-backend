@@ -389,9 +389,12 @@
                     <redirectTestOutputToFile>true</redirectTestOutputToFile>
                     <excludes>
                         <exclude>**/*_Roo_*</exclude>
-                        <exclude>**/*Tifon*Test.java</exclude>
+                        <exclude>**/*TifonLozulje*Test.java</exclude>
+                        <exclude>**/*Ina*Test.java</exclude>
                         <exclude>**/*Omv*Test.java</exclude>
                         <exclude>**/*LukoilSuper98*Test.java</exclude>
+                        <exclude>**/*Lukoil*Test.java</exclude>
+                        <exclude>**/*Petrol*Test.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>
