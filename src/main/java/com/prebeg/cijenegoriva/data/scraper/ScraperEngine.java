@@ -61,7 +61,7 @@ public class ScraperEngine {
   @PostConstruct
 	public void postconstruct() {
     scrapers = new ArrayList<Scraper>();
-    scrapers.add(croduxScraper);
+    //scrapers.add(croduxScraper);
     scrapers.add(tifonScraper);
     //scrapers.add(inaScraper);
     //scrapers.add(petrolScraper);
